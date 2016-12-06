@@ -2,4 +2,8 @@ This is my first file
 
 let's merge this with master after changes
 
+<<<<<<< HEAD
 
+=======
+do some changes
+>>>>>>> release
