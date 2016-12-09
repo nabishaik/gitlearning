@@ -1,0 +1,9 @@
+1) Create Jenkins Job
+2) Use Push code to Git
+https://github.com/gopidevops/gitlearning
+create folder with this pattern
+<Username>-<Java/.net/c++>
+3) Use Jenkins to checkout the code
+4) Use maven for Java, NANT for .net project 
+5) Compile the code
+6) Save the compiled code in another folder on your machine

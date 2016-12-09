@@ -1,1 +1,8 @@
+<<<<<<< HEAD
 company home page
+=======
+Edited by Priya.
+company home page
+sasa>>>>>> af2d0949b2b5f21d6bbfa2a29d7b9c688eb2390d
+
+sasasasasa
