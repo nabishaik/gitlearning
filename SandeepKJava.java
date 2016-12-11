@@ -7,8 +7,7 @@ public class SwapElementsExample {
                
                 System.out.println("Before Swapping");
                 System.out.println("Value of num1 is :" + num1);
-                System.out.println("Value of num2 is :" +num2);
-               
+                System.out.println("Value of num2 is :" +num2);   
                 //swap the value
                 swap(num1, num2);
         }
