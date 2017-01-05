@@ -1,0 +1,90 @@
+<project name="MyFirstApp" default="compile" basedir=".">
+
+	<!--
+		Best Practices
+
+		1. 	Cleanup the build artifacts before the build starts
+		2. 	All the directories that are needed at the time of build are created in an init target
+		3.	Avoid using hardcoded paths, fixed version numbers for better maintainability
+	-->	
+	
+	<!--
+		Steps
+		
+		1.	Compile the source files
+		2.	Creates the Jar File
+		3.	Copy the web files
+		4.	Create a zip file containing the jar and web files and ship it to customer
+	-->
+	<!--
+	<property name="src.dir" value="."/>
+	<property name="build.dir" value="build"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="dist.dir" value="dist"/>
+	<property name="app.version" value="1.0"/>
+	-->
+	<!--property file="build.properties"/-->
+	
+	<!-- the absolute path to the location of the buildfile -->
+	<echo>${basedir}</echo>
+	<!-- the absolute path of the buildfile -->
+	<echo>${ant.file}</echo>
+	<!-- ant.version - the version of Ant that you are running -->
+	<echo>${ant.version}</echo>
+	<!-- ant.project.name - the name of the project -->
+	<echo>${ant.project.name}</echo>
+	<!-- ant.java.version - the JVM version Ant detected; -->
+	<echo>${ant.java.version}</echo>
+  
+	<!-- set global properties -->
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="build"/>
+	<property name="dist.dir" value="dist"/>
+	<property name="web.dir" value="web"/>
+	
+	<property name="app.version" value="1.0"/>
+	
+	<target name="MyTarget">
+		<echo message = "Source directory is ${SrcDir}"/>
+		<echo message = "Build directory is ${BuildDir}"/>
+	</target>
+	<target name="clean">
+		<delete dir="build"/>
+		<delete dir="dist"/>
+	</target>	
+	
+	<target name="init">
+		<mkdir dir="${build.dir}/classes"/>
+		<mkdir dir="${dist.dir}/jar"/>
+		
+	</target>
+	
+	<target name="compile" depends="clean,init">
+	
+		<javac srcdir="${src.dir}" 
+			destdir="${build.dir}"
+			debug="on"/>
+			
+	</target>
+	<target name="jar" depends="compile">
+		<jar destfile="${build.dir}/jar/${ant.project.name}-${app.version}.jar" 
+			basedir="${build.dir}/classes" 
+			excludes="**/*Test.class"/> 
+	</target>
+	<!--
+	<target name="copywebfiles">
+		<copy todir="${build.dir}/web">
+			<fileset dir="${web.dir}"/>
+				
+		</copy>
+		
+	</target>
+	
+	<target name="dist" depends="jar,copywebfiles">
+		<zip destfile="${dist.dir}/${ant.project.name}-${app.version}.zip">
+			<fileset dir="${build.dir}/jar"/>
+			<fileset dir="${build.dir}/web"/>
+		</zip>
+	</target>
+	-->
+</project>
